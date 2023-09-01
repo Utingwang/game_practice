@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="00.css">
+    <script src="https://kit.fontawesome.com/d5f1fdca24.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 最左邊選單 -->
+        <div class="item">
+            <div class="ruturnNav">
+                <a class="smallFont">← </a>
+                <a class="smallFont">home</a>
+            </div>
+            <a class="smallFont" :href="navLink" v-for="(link,navLink) in navItem" :key="navLink">
+                {{link.text}}
+            </a>
+        </div>
+        <!-- 右邊升級面板 -->
+        <div class="nowGrade">
+            <!-- 錢跟材料 -->
+            <div class="material">
+                <div class="money smallFont">
+                    <i class="fa-solid fa-money-bill-1-wave"></i>
+                    <span>{{money}}</span>
+                </div>
+                <div class="red smallFont">
+                    <i class="fa-solid fa-diamond"></i>
+                    <span>{{red}}</span>
+                </div>
+            </div>
+            <!-- 當前等級 -->
+            <div class="level">
+                <div class="item">
+                    <div class="smallIcon">
+                        <div></div>
+                        <p>mbcc system</p>
+                    </div>
+                    <div class="text">
+                        <p>當前等級</p>
+                    </div>
+                    <div class="circle">
+                        <div class="circleBody"></div>
+                        <p>{{levelNumber}}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 紀錄數值 -->
+            <div class="value">
+                <ul>
+                    <li class="text">
+                        <h2>當前階級</h2>
+                    </li>
+                    <li>
+                        <p class="title">生命</p>
+                        <p>{{
+                            originalLife}}
+                        </p>
+                        <p>{{
+                            newLife}}
+                        </p>
+                    </li>
+                    <li>
+                        <p class="title">攻擊</p>
+                        <p>{{
+                            originalAttack}}
+                        </p>
+                        <p>{{
+                            newAttack}}
+                        </p>
+                    </li>
+                    <li>
+                        <p class="title">防禦</p>
+                        <p>{{
+                            originalDefense}}
+                        </p>
+                        <p>{{
+                            newDefense}}
+                        </p>
+                    </li>
+                    <li>
+                        <p class="title">法抗</p>
+                        <p>{{
+                            originalSpellDuel}}
+                        </p>
+                        <p>{{
+                            newSpellDuel}}
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <!-- 消耗+升級按鈕 -->
+            <div class="spand">
+                <h2 class="text">消耗材料</h2>
+                <div class="spandValue">
+                    <div class="title">消耗:</div>
+                    <i class="fa-solid fa-money-bill-1-wave"></i>
+                    <p>{{spendMoney}}</p>
+                    <i class="fa-solid fa-diamond"></i>
+                    <p>{{spendRed}}</p>
+                    <button v-on:click="vuleChange">升級</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                const initialLevelNumber = 8;
+                return {
+                    navItem: [
+                        {
+                            navLink: "#",
+                            text: '資訊',
+                        },
+                        {
+                            navLink: "#",
+                            text: '培養',
+                        },
+                        {
+                            navLink: "#",
+                            text: '技能',
+                        },
+                        {
+                            navLink: "#",
+                            text: '枷鎖',
+                        },
+                        {
+                            navLink: "#",
+                            text: '烙印',
+                        },
+                        {
+                            navLink: "#",
+                            text: '檔案',
+                        },
+                    ],
+                    money: 1000,
+                    red: 1000,
+                    levelNumber: initialLevelNumber,
+
+                    originalLife: 300,
+                    newLife: 200,
+                    originalAttack: 3000,
+                    newAttack: 200,
+                    originalDefense: 2000,
+                    newDefense: 200,
+                    originalSpellDuel: 1000,
+                    newSpellDuel: 200,
+                    spendMoney: initialLevelNumber * 100,
+                    spendRed: initialLevelNumber * 100,
+                }
+            },
+            methods: {
+                vuleChange() {
+                    if (this.money >= this.spendMoney) {
+                        this.money = this.money - this.spendMoney
+                        this.red = this.red - this.spendMoney
+
+                        this.levelNumber = this.levelNumber + 1;
+                        this.originalLife = this.originalLife + 100;
+                        this.newLife = this.newLife + 100;
+                        this.originalAttack = this.originalAttack + 100;
+                        this.newAttack = this.newAttack + 100;
+                        this.originalDefense = this.originalDefense + 100;
+                        this.newDefense = this.newDefense + 100;
+                        this.originalSpellDuel = this.originalSpellDuel + 100;
+                        this.newSpellDuel = this.newSpellDuel + 100;
+                    } else {
+                        alert("材料不足");
+                    }
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

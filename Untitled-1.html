@@ -1,0 +1,62 @@
+<div class="nowGrade">
+    <!-- 錢跟材料 -->
+    <div class="material">
+        <div class="money">
+            <i class="fa-solid fa-money-bill-1-wave"></i>
+            {{money}}
+        </div>
+        <div class="red">
+            <i class="fa-solid fa-diamond"></i>
+            {{red}}
+        </div>
+    </div>
+    <!-- 當前等級 -->
+    <div class="text">當前等級</div>
+    <div class="circle">
+        <p>{{levelNumber}}<span>/90</span>
+        </p>
+    </div>
+    <!-- 紀錄數值 -->
+    <div class="">
+        <ul>
+            <li>當前階級</li>
+            <li>
+                <p>生命</p>
+                <p>{{
+                    originalLife}}
+                </p>
+                <p>{{
+                    newLife}}
+                </p>
+            </li>
+            <li>
+                <p>攻擊</p>
+                <p>{{
+                    originalAttack}}
+                </p>
+                <p>{{
+                    newAttack}}
+                </p>
+            </li>
+            <li>
+                <p>防禦</p>
+                <p>{{
+                    originalDefense}}
+                </p>
+                <p>{{
+                    newDefense}}
+                </p>
+            </li>
+            <li>
+                <p>法抗</p>
+                <p>{{
+                    originalSpellDuel}}
+                </p>
+                <p>{{
+                    newSpellDuel}}
+                </p>
+            </li>
+        </ul>
+    </div>
+
+</div>

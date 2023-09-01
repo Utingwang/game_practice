@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="00.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <div id="example">
+            <button v-on:click="food += 1">打獵</button>
+            <button @click="food += 1">採水果</button>
+            <button @click="callPeople">招集平民</button>
+            <p>民眾： {{ people }}人</p>
+            <p>食物： {{ food }}</p>
+        </div>
+    </div>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    people: 2,
+                    food: 300
+                }
+            },
+            methods: {
+                callPeople() {
+                    this.food = this.food - 3
+                    this.people = this.people + 1
+                }
+            }
+        }).mount('#example')
+    </script>
+    </script>
+</body>
+
+</html>
